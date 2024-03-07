@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+
+import './scss/App.scss';
+import Header from './Componets/Header';
+import RecipeList from './Componets/RecipeList';
+import Tabs from './Componets/Tabs';
+import { useState } from 'react';
 
 function App() {
+  const [loader, setLoder] = useState(false)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Tabs />
+      <RecipeList loader={loader} setLoder={setLoder} />
+      {loader && <div className='loader'>
+        <div className="spinner"></div>
+      </div>}
     </div>
   );
 }
